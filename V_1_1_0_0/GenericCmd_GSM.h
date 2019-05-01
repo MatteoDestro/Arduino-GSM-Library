@@ -100,102 +100,102 @@ const uint8_t  EEMEM PIN1_CODE[7]       = "\"4629\"";           //  PIN Code SIM
 //======================================================================
 //  AT COMMAND - STORED IN FLASH MEMORY
 const char AT[]          PROGMEM = "AT\r\n";
-const char ATF0[]        PROGMEM = "AT&F0\r\n";                         //  Command - Set all TA parameters to manufacturer defaults
-const char ATW0[]        PROGMEM = "AT&W0\r\n";                         //  Command - Store the current configuration in profile 0
-const char ATZ0[]        PROGMEM = "ATZ0\r\n";                          //  Command - Restore profile 0
-const char ATV1[]        PROGMEM = "ATV1\r\n";                          //  Command - Set TA Response Format (if <n> = 1 -> Long Result code format)
-const char ATQ0[]        PROGMEM = "ATQ0\r\n";                          //  Command - Set Result Code Presentation Mode (if <n> = 0 -> TA transmits result code)
-const char ATE0[]        PROGMEM = "ATE0\r\n";                          //  Command - Set Command Echo Mode (if <n> = 0 -> Echo mode off)
-const char AT_CMEE[]     PROGMEM = "AT+CMEE=1\r\n";                     //  Command - Set Report Mobile Equiment Error (if <n> = 1 -> Enable +CME ERROR - Use numeric error)
-const char AT_IPR[]      PROGMEM = "AT+IPR=0\r\n";                      //  Command - Set TE-TA Autobaud mode
+const char ATF0[]        PROGMEM = "AT&F0\r\n";                     //  Command - Set all TA parameters to manufacturer defaults
+const char ATW0[]        PROGMEM = "AT&W0\r\n";                     //  Command - Store the current configuration in profile 0
+const char ATZ0[]        PROGMEM = "ATZ0\r\n";                      //  Command - Restore profile 0
+const char ATV1[]        PROGMEM = "ATV1\r\n";                      //  Command - Set TA Response Format (if <n> = 1 -> Long Result code format)
+const char ATQ0[]        PROGMEM = "ATQ0\r\n";                      //  Command - Set Result Code Presentation Mode (if <n> = 0 -> TA transmits result code)
+const char ATE0[]        PROGMEM = "ATE0\r\n";                      //  Command - Set Command Echo Mode (if <n> = 0 -> Echo mode off)
+const char AT_CMEE[]     PROGMEM = "AT+CMEE=1\r\n";                 //  Command - Set Report Mobile Equiment Error (if <n> = 1 -> Enable +CME ERROR - Use numeric error)
+const char AT_IPR[]      PROGMEM = "AT+IPR=0\r\n";                  //  Command - Set TE-TA Autobaud mode
 #if defined(SIMCOM_SIM800C) || defined(SIMCOM_SIM900) || defined(SIMCOM_SIM928A) || defined(QUECTEL_M95) || defined(AI_THINKER_A9)
-    const char AT_ICF[]      PROGMEM = "AT+ICF=3,0\r\n";                    //  Command - Set TE-TA Control Character Framing (8 Data, 0 Parity, 1 Stop) - (Parity Odd)
+    const char AT_ICF[]      PROGMEM = "AT+ICF=3,0\r\n";            //  Command - Set TE-TA Control Character Framing (8 Data, 0 Parity, 1 Stop) - (Parity Odd)
 #endif
 #ifdef FIBOCOM_G510
-    const char AT_ICF[]      PROGMEM = "AT+ICF=3,4\r\n";                    //  Command - Set TE-TA Control Character Framing (8 Data, 0 Parity, 1 Stop) - (Parity Odd)
+    const char AT_ICF[]      PROGMEM = "AT+ICF=3,4\r\n";            //  Command - Set TE-TA Control Character Framing (8 Data, 0 Parity, 1 Stop) - (Parity Odd)
 #endif
-    const char AT_IFC[]      PROGMEM = "AT+IFC=0,0\r\n";                    //  Command - Set TE-TA Local Data Flow Control (No Flow control)
-    const char AT_CALS[]     PROGMEM = "AT+CALS=0\r\n";                     //  Command - Select Alert Sound (0 - 19)
+    const char AT_IFC[]      PROGMEM = "AT+IFC=0,0\r\n";            //  Command - Set TE-TA Local Data Flow Control (No Flow control)
+    const char AT_CALS[]     PROGMEM = "AT+CALS=0\r\n";             //  Command - Select Alert Sound (0 - 19)
 #ifdef EARPHONES_JACK
     #ifdef SIMCOM_SIM800C
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
         const char AT_CRSL[]    PROGMEM = "AT+CRSL=60\r\n";         //  Command - Set Ringer Sound Level (0-100 Value) - 0 is lowest volume (not mute)
         const char AT_CLVL[]    PROGMEM = "AT+CLVL=60\r\n";         //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)
-        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,6\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8
+        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,6\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8
     #endif  
     #ifdef SIMCOM_SIM900
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
-        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";              //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";          //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
         const char AT_CLVL[]    PROGMEM = "AT+CLVL=60\r\n";         //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)       
-        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,6\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8
+        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,6\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8
     #endif  
     #ifdef SIMCOM_SIM928A
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
-        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";              //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";          //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
         const char AT_CLVL[]    PROGMEM = "AT+CLVL=60\r\n";         //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)       
-        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,6\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8
+        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,6\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8
     #endif  
     #ifdef QUECTEL_M95
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
         const char AT_CRSL[]    PROGMEM = "AT+CRSL=60\r\n";         //  Command - Set Ringer Sound Level (0-100 Value) - 0 is lowest volume (not mute)
         const char AT_CLVL[]    PROGMEM = "AT+CLVL=40\r\n";         //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)
-        const char AT_CMIC[]    PROGMEM = "AT+QMIC=0,2\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8        
+        const char AT_CMIC[]    PROGMEM = "AT+QMIC=0,2\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8        
     #endif
     #ifdef FIBOCOM_G510
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0,0\r\n";            //  Command - Set Alert Sound Mode: 0 Ring; 1 Silent mode (First parameter "Call Mode", second "SMS Mode")
-        const char AT_CRSL[]    PROGMEM = "AT+CRSL=7\r\n";              //  Command - Set Ringer Sound Level (0-7 Value) - 0 is lowest volume (not mute)
-        const char AT_CLVL[]    PROGMEM = "AT+CLVL=4\r\n";              //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0,0\r\n";        //  Command - Set Alert Sound Mode: 0 Ring; 1 Silent mode (First parameter "Call Mode", second "SMS Mode")
+        const char AT_CRSL[]    PROGMEM = "AT+CRSL=7\r\n";          //  Command - Set Ringer Sound Level (0-7 Value) - 0 is lowest volume (not mute)
+        const char AT_CLVL[]    PROGMEM = "AT+CLVL=4\r\n";          //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
         const char AT_CMIC[]    PROGMEM = "AT+MMICG=4\r\n";         //  Command - Set MIC Gain: value of gain 8
     #endif
     #ifdef AI_THINKER_A9
-        const char AT_CLVL[]    PROGMEM = "AT+CLVL=4\r\n";              //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
-        const char AT_CMIC[]    PROGMEM = "AT+VGR=3\r\n";               //  Command - Set MIC Gain: value of gain 6
+        const char AT_CLVL[]    PROGMEM = "AT+CLVL=4\r\n";          //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
+        const char AT_CMIC[]    PROGMEM = "AT+VGR=3\r\n";           //  Command - Set MIC Gain: value of gain 6
     #endif
 #else 
     #ifdef SIMCOM_SIM800C
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
         const char AT_CRSL[]    PROGMEM = "AT+CRSL=60\r\n";         //  Command - Set Ringer Sound Level (0-100 Value) - 0 is lowest volume (not mute)
-        const char AT_CLVL[]    PROGMEM = "AT+CLVL=100\r\n";            //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)
-        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,4\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8        
+        const char AT_CLVL[]    PROGMEM = "AT+CLVL=100\r\n";        //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)
+        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,4\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8        
     #endif  
     #ifdef SIMCOM_SIM900
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
-        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";              //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
-        const char AT_CLVL[]    PROGMEM = "AT+CLVL=100\r\n";            //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)   
-        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,4\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";          //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
+        const char AT_CLVL[]    PROGMEM = "AT+CLVL=100\r\n";        //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)   
+        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,4\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8
     #endif      
     #ifdef SIMCOM_SIM928A
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
-        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";              //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
-        const char AT_CLVL[]    PROGMEM = "AT+CLVL=100\r\n";            //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)       
-        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,4\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CRSL[]    PROGMEM = "AT+CRSL=4\r\n";          //  Command - Set Ringer Sound Level (Integer value 0-4) - 0 LEVEL OFF; 1 LEVEL LOW, 2 LEVEL MEDIUM, 3 LEVEL HIGH, 4 LEVEL CRESCENDO
+        const char AT_CLVL[]    PROGMEM = "AT+CLVL=100\r\n";        //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)       
+        const char AT_CMIC[]    PROGMEM = "AT+CMIC=0,4\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8
     #endif  
     #ifdef QUECTEL_M95
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";              //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0\r\n";          //  Command - Set Alert Sound Mode: 0 Normal mode; 1 Silent mode
         const char AT_CRSL[]    PROGMEM = "AT+CRSL=60\r\n";         //  Command - Set Ringer Sound Level (0-100 Value) - 0 is lowest volume (not mute)
         const char AT_CLVL[]    PROGMEM = "AT+CLVL=70\r\n";         //  Command - Set Loud Speaker Volume Level (0-100 Value) - 0 is lowest volume (not mute)
-        const char AT_CMIC[]    PROGMEM = "AT+QMIC=0,2\r\n";            //  Command - Set MIC Gain: <Channel> 0, value of gain 8        
+        const char AT_CMIC[]    PROGMEM = "AT+QMIC=0,2\r\n";        //  Command - Set MIC Gain: <Channel> 0, value of gain 8        
     #endif
     #ifdef FIBOCOM_G510
-        const char AT_CALM[]    PROGMEM = "AT+CALM=0,0\r\n";            //  Command - Set Alert Sound Mode: 0 Ring; 1 Silent mode (First parameter "Call Mode", second "SMS Mode")
-        const char AT_CRSL[]    PROGMEM = "AT+CRSL=7\r\n";              //  Command - Set Ringer Sound Level (0-7 Value) - 0 is lowest volume (not mute)
-        const char AT_CLVL[]    PROGMEM = "AT+CLVL=6\r\n";              //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
+        const char AT_CALM[]    PROGMEM = "AT+CALM=0,0\r\n";        //  Command - Set Alert Sound Mode: 0 Ring; 1 Silent mode (First parameter "Call Mode", second "SMS Mode")
+        const char AT_CRSL[]    PROGMEM = "AT+CRSL=7\r\n";          //  Command - Set Ringer Sound Level (0-7 Value) - 0 is lowest volume (not mute)
+        const char AT_CLVL[]    PROGMEM = "AT+CLVL=6\r\n";          //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
         const char AT_CMIC[]    PROGMEM = "AT+MMICG=4\r\n";         //  Command - Set MIC Gain: value of gain 8
     #endif
     #ifdef AI_THINKER_A9
-        const char AT_CLVL[]    PROGMEM = "AT+CLVL=6\r\n";              //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
-        const char AT_CMIC[]    PROGMEM = "AT+VGR=4\r\n";               //  Command - Set MIC Gain: value of gain 6
+        const char AT_CLVL[]    PROGMEM = "AT+CLVL=6\r\n";          //  Command - Set Loud Speaker Volume Level (0-6 Value) - 0 is lowest volume (not mute)
+        const char AT_CMIC[]    PROGMEM = "AT+VGR=4\r\n";           //  Command - Set MIC Gain: value of gain 6
     #endif
 #endif
 
-const char AT_CRC[]     PROGMEM = "AT+CRC=1\r\n";                       //  Command - Set Cellular Result Code for Incoming Call Indication (if <n> = 1 -> Enable Extended Format)
-const char AT_CLIP[]    PROGMEM = "AT+CLIP=1\r\n";                      //  Command - Set Calling Line Identification Presentation (if <n> = 1 -> Enable CLIP Notification)
-const char AT_CMGF[]    PROGMEM = "AT+CMGF=1\r\n";                      //  Command - Set SMS Message Format (if <n> = 1 -> Text Mode; 0 -> PDU Mode)
+const char AT_CRC[]     PROGMEM = "AT+CRC=1\r\n";                   //  Command - Set Cellular Result Code for Incoming Call Indication (if <n> = 1 -> Enable Extended Format)
+const char AT_CLIP[]    PROGMEM = "AT+CLIP=1\r\n";                  //  Command - Set Calling Line Identification Presentation (if <n> = 1 -> Enable CLIP Notification)
+const char AT_CMGF[]    PROGMEM = "AT+CMGF=1\r\n";                  //  Command - Set SMS Message Format (if <n> = 1 -> Text Mode; 0 -> PDU Mode)
 #if defined(SIMCOM_SIM800C) || defined(SIMCOM_SIM900) || defined(SIMCOM_SIM928A) || defined (QUECTEL_M95) || defined(FIBOCOM_G510)
-    const char AT_CSCS[]    PROGMEM = "AT+CSCS=\"IRA\"\r\n";                //  Command - Set TE Character Set ("IRA" -> International Reference Alphabet)
+    const char AT_CSCS[]    PROGMEM = "AT+CSCS=\"IRA\"\r\n";        //  Command - Set TE Character Set ("IRA" -> International Reference Alphabet)
 #endif
 #ifdef AI_THINKER_A9
-    const char AT_CSCS[]    PROGMEM = "AT+CSCS=\"GSM\"\r\n";                //  Command - Set TE Character Set ("GSM" -> GSM 7bit)
+    const char AT_CSCS[]    PROGMEM = "AT+CSCS=\"GSM\"\r\n";            //  Command - Set TE Character Set ("GSM" -> GSM 7bit)
 #endif
 const char AT_CNMI[]     PROGMEM = "AT+CNMI=1,1,0,0,0\r\n";             //  Command - Set New SMS Message Indications
 const char AT_CPMS_DEF[] PROGMEM = "AT+CPMS=\"SM\",\"SM\",\"SM\"\r\n";  //  Command - Set Preferrend SMS Message Storage (Default)
@@ -221,36 +221,36 @@ const char AT_GSN[]      PROGMEM = "AT+GSN\r\n";                        //  Quer
 const char AT_CGSN[]     PROGMEM = "AT+CGSN\r\n";                       //  Query   - Request TA Serial Number Identification (IMEI) (AT Commands According to 3GPP TS 27.007)
 
 #if defined(SIMCOM_SIM800C) || defined(SIMCOM_SIM900) || defined(SIMCOM_SIM928A)
-    const char AT_PW_DOWN[]  PROGMEM = "AT+CPOWD=1\r\n";                    //  Command - SIM900 software Power Down (Normal Power Down)
+    const char AT_PW_DOWN[]  PROGMEM = "AT+CPOWD=1\r\n";                //  Command - SIM900 software Power Down (Normal Power Down)
 #endif
 #ifdef QUECTEL_M95
-    const char AT_PW_DOWN[]  PROGMEM = "AT+QPOWD=1\r\n";                    //  Command - G510 software Power Down (Normal Power Down)
+    const char AT_PW_DOWN[]  PROGMEM = "AT+QPOWD=1\r\n";                //  Command - G510 software Power Down (Normal Power Down)
 #endif
 #ifdef FIBOCOM_G510
-    const char AT_PW_DOWN[]  PROGMEM = "AT+MRST\r\n";                       //  Command - M95 software Power Down
+    const char AT_PW_DOWN[]  PROGMEM = "AT+MRST\r\n";                   //  Command - M95 software Power Down
 #endif
 #ifdef AI_THINKER_A9
-    const char AT_PW_DOWN[]  PROGMEM = "AT+CPOF\r\n";                       //  Command - M95 software Power Down
+    const char AT_PW_DOWN[]  PROGMEM = "AT+CPOF\r\n";                   //  Command - M95 software Power Down
 #endif
 //======================================================================
 
 //======================================================================
 //  AT COMMAND ANSWER - STORED IN FLASH MEMORY
 #if defined(SIMCOM_SIM800C) || defined(SIMCOM_SIM900) || defined(SIMCOM_SIM928A)
-    const char AT_ANSW_PWR_ON[]         PROGMEM = "RDY";                    // Answer HW Power On at fixed baudrate
-    const char AT_ANSW_PWR_OFF[]        PROGMEM = "NORMAL POWER DOWN";      // Answer HW Power Off
+    const char AT_ANSW_PWR_ON[]         PROGMEM = "RDY";                // Answer HW Power On at fixed baudrate
+    const char AT_ANSW_PWR_OFF[]        PROGMEM = "NORMAL POWER DOWN";  // Answer HW Power Off
 #endif
 #ifdef QUECTEL_M95
-    const char AT_ANSW_PWR_ON[]         PROGMEM = "RDY";                    // Answer HW Power On at fixed baudrate
-    const char AT_ANSW_PWR_OFF[]        PROGMEM = "NORMAL POWER DOWN";      // Answer HW Power Off
+    const char AT_ANSW_PWR_ON[]         PROGMEM = "RDY";                // Answer HW Power On at fixed baudrate
+    const char AT_ANSW_PWR_OFF[]        PROGMEM = "NORMAL POWER DOWN";  // Answer HW Power Off
 #endif
 #ifdef FIBOCOM_G510
-    const char AT_ANSW_PWR_ON[]         PROGMEM = "AT command ready";       // Answer HW Power On at fixed baud rate
-    const char AT_ANSW_PWR_OFF[]        PROGMEM = "";                       // Answer HW Power Off
+    const char AT_ANSW_PWR_ON[]         PROGMEM = "AT command ready";   // Answer HW Power On at fixed baud rate
+    const char AT_ANSW_PWR_OFF[]        PROGMEM = "";                   // Answer HW Power Off
 #endif
 #ifdef AI_THINKER_A9
-    const char AT_ANSW_PWR_ON[]         PROGMEM = "AT command ready";       // Answer HW Power On at fixed baud rate
-    const char AT_ANSW_PWR_OFF[]        PROGMEM = "MS OFF";                 // Answer HW Power Off
+    const char AT_ANSW_PWR_ON[]         PROGMEM = "AT command ready";   // Answer HW Power On at fixed baud rate
+    const char AT_ANSW_PWR_OFF[]        PROGMEM = "MS OFF";             // Answer HW Power Off
 #endif
 const char AT_ANSW_OK[]             PROGMEM = "OK";                     // Answer at commands executed with succes
 const char AT_ANSW_CME_ERROR[]      PROGMEM = "+CME ERROR:";            // Key word answer for general Errors 
@@ -345,12 +345,12 @@ const char AT_MAJOR[]               PROGMEM = ">";
 #define MAX_SOUND_TYPE          19      //  Max value for Alert Sound Type. SIMCOM Only
 
 #ifdef SIMCOM_SIM800C
-    #define START_PLAYING_RING_TONE 1
-    #define STOP_PLAYING_RING_TONE  0
+    #define START_PLAYING_RING_TONE     1
+    #define STOP_PLAYING_RING_TONE      0
 #endif
 #ifdef SIMCOM_SIM900
-    #define START_PLAYING_RING_TONE 0
-    #define STOP_PLAYING_RING_TONE  1
+    #define START_PLAYING_RING_TONE     0
+    #define STOP_PLAYING_RING_TONE      1
 #endif
 //======================================================================
 
@@ -369,10 +369,10 @@ const char AT_MAJOR[]               PROGMEM = ">";
     #define MAX_SOUND_VALUE 100
 #endif
 #if defined(SIMCOM_SIM900) || defined(SIMCOM_SIM928A)
-    #define MAX_SOUND_VALUE 4
+    #define MAX_SOUND_VALUE     4
 #endif
 #ifdef FIBOCOM_G510
-    #define MAX_SOUND_VALUE 7
+    #define MAX_SOUND_VALUE     7
 #endif
 //======================================================================
 
