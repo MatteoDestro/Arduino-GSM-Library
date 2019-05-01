@@ -5,41 +5,41 @@
  *********************************************************************
  * FileName:        GenericCmd_GSM.h
  * Revision:        1.0.0 (First issue)
- * Date:			01/10/2016
+ * Date:            01/10/2016
  *
  * Revision:        1.1.0
- *					15/10/2018
- *					- The name of structure "EepromAdd" was changed in "PswdEepromAdd"
- *					- The name of function "void EepromStartAddSetup(void)" was changed in "void PswdEepromStartAddSetup(void)"
- *					- Added a section to parametrize the audio interface (Speaker volume and microphone gain). One for each GSM engine
- *					- Added new error code: Unspecified GPRS error (0x0094), PDP authentication failure (0x0095) and GPRS is suspended (0x0212)
- *					- Removed the AT command ECHO CANC in the GSM engine initialization
- *					- Added the AT command AT+CPBS in the GSM engine initialization
- *					- Added the AT command AT+CALM in the GSM engine initialization
- *					- Added the AT command AT+CRSL in the GSM engine initialization
- *					- Added the AT command AT+CALM to the available commands list
- *					- Added the AT command AT+CRSL to the available commands list
- *					- Added the AT command AT+CALS to the available commands list
- *					- Added three new error code: Invalid input parameter (323); Invalid input format (324); Invalid input value (325)
- *					- Renamed function "void ResetFlags(void)" in "void ResetAllFlags(void)"
- *					- Added new functions to clear flags grouped in categories:
- *						+ "void ResetGsmFlags(void)"				-> Reset Gsm Flags Only
- *						+ "void ResetSecurityFlags(void)"			-> Reset Security Flags Only
- *						+ "void ResetPhoneBookFlags(void)" 			-> Reset PhoneBook Flags Only
- *						+ "void ResetSmsFlags(void)"				-> Reset Sms Flags Only
- *						+ "void ResetPhonicCallFlags(void)"			-> Reset Phonic Call Flags Only
- *						+ "void ResetGprsFlags(void)"				-> Reset Gprs Flags Only
- *						+ "void ResetHttpFlags(void)"				-> Reset Http Flags Only
- *						+ "void ResetTcpIpFlags(uint8_t IndexConn)"	-> Reset TcpIp Flags Only
- *					- Added new flag "Gsm.GsmFlag.Bit.NoAutoResetGsmError" to disbale automatic GSM reset
+ *                  15/10/2018
+ *                  - The name of function "void EepromStartAddSetup(void)" was changed in "void PswdEepromStartAddSetup(void)"
+ *                  - The name of structure "EepromAdd" was changed in "PswdEepromAdd"
+ *                  - Added a section to parametrize the audio interface (Speaker volume and microphone gain). One for each GSM engine
+ *                  - Added new error code: Unspecified GPRS error (0x0094), PDP authentication failure (0x0095) and GPRS is suspended (0x0212)
+ *                  - Removed the AT command ECHO CANC in the GSM engine initialization
+ *                  - Added the AT command AT+CPBS in the GSM engine initialization
+ *                  - Added the AT command AT+CALM in the GSM engine initialization
+ *                  - Added the AT command AT+CRSL in the GSM engine initialization
+ *                  - Added the AT command AT+CALM to the available commands list
+ *                  - Added the AT command AT+CRSL to the available commands list
+ *                  - Added the AT command AT+CALS to the available commands list
+ *                  - Added three new error code: Invalid input parameter (323); Invalid input format (324); Invalid input value (325)
+ *                  - Renamed function "void ResetFlags(void)" in "void ResetAllFlags(void)"
+ *                  - Added new functions to clear flags grouped in categories:
+ *                      + "void ResetGsmFlags(void)"				-> Reset Gsm Flags Only
+ *                      + "void ResetSecurityFlags(void)"			-> Reset Security Flags Only
+ *                      + "void ResetPhoneBookFlags(void)" 			-> Reset PhoneBook Flags Only
+ *                      + "void ResetSmsFlags(void)"				-> Reset Sms Flags Only
+ *                      + "void ResetPhonicCallFlags(void)"			-> Reset Phonic Call Flags Only
+ *                      + "void ResetGprsFlags(void)"				-> Reset Gprs Flags Only
+ *                      + "void ResetHttpFlags(void)"				-> Reset Http Flags Only
+ *                      + "void ResetTcpIpFlags(uint8_t IndexConn)"	-> Reset TcpIp Flags Only
+ *                  - Added new flag "Gsm.GsmFlag.Bit.NoAutoResetGsmError" to disbale automatic GSM reset
  *
- * Dependencies:	Arduino.h
- *					Io_Gsm.h
- * Arduino Board:	Arduino Uno, Arduino Mega 2560, Fishino Uno, Fishino Mega 2560       
+ * Dependencies:    Arduino.h
+ *                  Io_Gsm.h
+ * Arduino Board:   Arduino Uno, Arduino Mega 2560, Fishino Uno, Fishino Mega 2560       
  *
  * Company:         Futura Group srl
- *  				www.Futurashop.it
- *  				www.open-electronics.org
+ *                  www.Futurashop.it
+ *                  www.open-electronics.org
  *
  * Developer:		Destro Matteo
  *
