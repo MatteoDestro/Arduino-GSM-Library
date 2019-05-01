@@ -5,28 +5,28 @@
  *********************************************************************
  * FileName:        Isr_GSM.cpp
  * Revision:        1.0.0
- * Date:			08/05/2016
+ * Date:            08/05/2016
  *
  * Revision:        1.1.0
- *					27/11/2018
- *					- Fixed bug INT0 or INT4 external interrupt. When SMS or phonic Call ring occur
- *					  sometime the routine for send AT commands stop. To fix bug it is necessary to reset 
- *					  the flag "Gsm.GsmFlag.Bit.GsmSendCmdInProgress" into "ResetFlags" function
+ *                  27/11/2018
+ *                  - Fixed bug INT0 or INT4 external interrupt. When SMS or phonic Call ring occur
+ *                    sometime the routine for send AT commands stop. To fix bug it is necessary to reset 
+ *                    the flag "Gsm.GsmFlag.Bit.GsmSendCmdInProgress" into "ResetFlags" function
  *
- * Dependencies:	SoftwareSerial.h
- *					GenericCmd_GSM.h
- *					Io_GSM.h
- *					Isr_GSM.h
- *					Uart_GSM.h
- * Arduino Board:	Arduino Uno, Arduino Mega 2560, Fishino Uno, Fishino Mega 2560       
+ * Dependencies:    SoftwareSerial.h
+ *                  GenericCmd_GSM.h
+ *                  Io_GSM.h
+ *                  Isr_GSM.h
+ *                  Uart_GSM.h
+ * Arduino Board:   Arduino Uno, Arduino Mega 2560, Fishino Uno, Fishino Mega 2560       
  *
  * Company:         Futura Group srl
- *  				www.Futurashop.it
- *  				www.open-electronics.org
+ *                  www.Futurashop.it
+ *                  www.open-electronics.org
  *
- * Developer:		Destro Matteo
+ * Developer:       Destro Matteo
  *
- * Support:			info@open-electronics.org
+ * Support:         info@open-electronics.org
  * 
  * Software License Agreement
  *
@@ -42,16 +42,16 @@
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
  *
- *	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- *	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- *	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * 	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
- *	ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- *	(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- *	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- *	ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- *	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ *  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ *  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ *  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ *  ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ *  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ *  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ *  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  **********************************************************************/
 
@@ -80,11 +80,11 @@
  *
  * PreCondition:    None
  *
- * GSM cmd syntax:	None	
+ * GSM cmd syntax:  None    
  *
  * Input:           None
  *
- * Command Note:	None
+ * Command Note:    None
  *
  * Output:          None
  *
@@ -95,8 +95,8 @@
  * Note:            This is a public function
  *****************************************************************************/
 void Isr_GSM::EnableLibInterrupt(void) {
-	Isr.EnableTimerInterrupt();
-	Isr.EnableCringInterrupt();	
+    Isr.EnableTimerInterrupt();
+    Isr.EnableCringInterrupt(); 
 }
 /****************************************************************************/
 
@@ -107,11 +107,11 @@ void Isr_GSM::EnableLibInterrupt(void) {
  *
  * PreCondition:    None
  *
- * GSM cmd syntax:	None	
+ * GSM cmd syntax:  None    
  *
  * Input:           None
  *
- * Command Note:	None
+ * Command Note:    None
  *
  * Output:          None
  *
@@ -122,23 +122,23 @@ void Isr_GSM::EnableLibInterrupt(void) {
  * Note:            This is a public function
  *****************************************************************************/
 void Isr_GSM::EnableTimerInterrupt(void) {
-	cli();          	  	// disable all interrupts
+    cli();                  // disable all interrupts
 #ifdef ARDUINO_UNO_REV3
-	TCCR1A = 0x00;
-	TCCR1B = 0x00;
-	TCNT1   = SLOWBASETIME;
-	TCCR1B |= 0x04;         // Prescaler 256
-	TIMSK1 |= 0x01;         // enable oveflow timer interrupt
+    TCCR1A = 0x00;
+    TCCR1B = 0x00;
+    TCNT1   = SLOWBASETIME;
+    TCCR1B |= 0x04;         // Prescaler 256
+    TIMSK1 |= 0x01;         // enable oveflow timer interrupt
 #endif
 #ifdef ARDUINO_MEGA2560_REV3
-	TCCR1A = 0x00;
-	TCCR1B = 0x00;
-	TCCR1C = 0x00;
-	TCNT1  = SLOWBASETIME;
-	TCCR1B = 0x04;
-	TIMSK1 = 0x01;         	// enable oveflow timer interrupt
+    TCCR1A = 0x00;
+    TCCR1B = 0x00;
+    TCCR1C = 0x00;
+    TCNT1  = SLOWBASETIME;
+    TCCR1B = 0x04;
+    TIMSK1 = 0x01;          // enable oveflow timer interrupt
 #endif
-	sei();		            // enable all interrupts
+    sei();                  // enable all interrupts
 }
 /****************************************************************************/
 
@@ -149,11 +149,11 @@ void Isr_GSM::EnableTimerInterrupt(void) {
  *
  * PreCondition:    None
  *
- * GSM cmd syntax:	None	
+ * GSM cmd syntax:  None    
  *
  * Input:           None
  *
- * Command Note:	None
+ * Command Note:    None
  *
  * Output:          None
  *
@@ -164,20 +164,20 @@ void Isr_GSM::EnableTimerInterrupt(void) {
  * Note:            This is a public function
  *****************************************************************************/
 void Isr_GSM::EnableCringInterrupt(void) {
-	cli();           			// disable all interrupts
+    cli();                      // disable all interrupts
 #ifdef ARDUINO_UNO_REV3
-	EIMSK  = 0x00;
-	EIMSK |= (1 << INT0);       // Enable external interrupt INT0
-	EICRA  = 0x00;
-	EICRA |= (1 << ISC01);      // The falling edge of INT0 generates an interrupt request
+    EIMSK  = 0x00;
+    EIMSK |= (1 << INT0);       // Enable external interrupt INT0
+    EICRA  = 0x00;
+    EICRA |= (1 << ISC01);      // The falling edge of INT0 generates an interrupt request
 #endif
-#ifdef ARDUINO_MEGA2560_REV3	
-	EIMSK  = 0x00;
-	EIMSK |= (1 << INT4);       // Enable external interrupt INT4	
-	EICRB  = 0x00;
-	EICRB |= (1 << ISC41);      // The falling edge of INT4 generates an interrupt request
-#endif	
-	sei();             		    // enable all interrupts 	
+#ifdef ARDUINO_MEGA2560_REV3    
+    EIMSK  = 0x00;
+    EIMSK |= (1 << INT4);       // Enable external interrupt INT4   
+    EICRB  = 0x00;
+    EICRB |= (1 << ISC41);      // The falling edge of INT4 generates an interrupt request
+#endif  
+    sei();                      // enable all interrupts    
 }
 /****************************************************************************/
 
@@ -185,20 +185,20 @@ void Isr_GSM::EnableCringInterrupt(void) {
  * Function:        ISR(TIMER1_OVF_vect)
  *
  * Overview:        TIMER1 interrupt vector. This timer is set to generate an interrupt every 2mSec
- *					This feature is used to create a moltitude of new timers using only simples variables
- *					with a resolution of 2 msec.
- *					For example to create a new timer of 100mSec is enough define a new variable and load
- *					a correct value into it. In this example the correct value to load into the variable is 50.
- *					This value is decremented every time that the interrupt occur. When this variable reach the
- *					zero value means that the timer is expired
+ *                  This feature is used to create a moltitude of new timers using only simples variables
+ *                  with a resolution of 2 msec.
+ *                  For example to create a new timer of 100mSec is enough define a new variable and load
+ *                  a correct value into it. In this example the correct value to load into the variable is 50.
+ *                  This value is decremented every time that the interrupt occur. When this variable reach the
+ *                  zero value means that the timer is expired
  *
  * PreCondition:    None
  *
- * GSM cmd syntax:	None	
+ * GSM cmd syntax:  None    
  *
  * Input:           None
  *
- * Command Note:	None
+ * Command Note:    None
  *
  * Output:          None
  *
@@ -209,29 +209,29 @@ void Isr_GSM::EnableCringInterrupt(void) {
  * Note:            This is a public function
  *****************************************************************************/
 ISR(TIMER1_OVF_vect) {
-	TCNT1 = SLOWBASETIME;    // preload timer
+    TCNT1 = SLOWBASETIME;    // preload timer
 
-	if (Isr.TimeOutWait				> 0) { Isr.TimeOutWait--;			}		//	Generic TimeOut
-	if (Isr.UartTimeOut				> 0) { Isr.UartTimeOut--;			}		//	TimeOut for hardware/software serial COM	
+    if (Isr.TimeOutWait             > 0) { Isr.TimeOutWait--;           }       //  Generic TimeOut
+    if (Isr.UartTimeOut             > 0) { Isr.UartTimeOut--;           }       //  TimeOut for hardware/software serial COM    
 
-	if (Isr.TimeOutBlinkLed4		> 0) { Isr.TimeOutBlinkLed4--;		}		//	TimeOut Blink Led 4
-	if (Isr.TimeOutBlinkLed5		> 0) { Isr.TimeOutBlinkLed5--;		}		//	TimeOut Blink Led 5
-	if (Isr.TimeOutBlinkLed6		> 0) { Isr.TimeOutBlinkLed6--;		}		//	TimeOut Blink Led 6
-	if (Isr.TimeOutBlinkLed7		> 0) { Isr.TimeOutBlinkLed7--;		}		//	TimeOut Blink Led 7
-	if (Isr.TimeOutBlinkLed8		> 0) { Isr.TimeOutBlinkLed8--;		}		//	TimeOut Blink Led 8
-	if (Isr.TimeOutBlinkLed9		> 0) { Isr.TimeOutBlinkLed9--;		}		//	TimeOut Blink Led 9
-	
-	if (Isr.TimeOutBlinkTrigger1	> 0) { Isr.TimeOutBlinkTrigger1--;	}		//	TimeOut Blink Trigger 1
-	if (Isr.TimeOutBlinkTrigger2	> 0) { Isr.TimeOutBlinkTrigger2--;	}		//	TimeOut Blink Trigger 2
-	if (Isr.TimeOutBlinkTrigger3	> 0) { Isr.TimeOutBlinkTrigger3--;	}		//	TimeOut Blink Trigger 3
-	
-	//--------------------------------------------------------
-	//	Used during engine GSM/GPRS initialization. The Trigger 3
-	//	blink to indiacate init process
-	if ((Gsm.GsmFlag.Bit.GsmInitInProgress == 1) || (Gsm.GsmFlag.Bit.GprsInitInProgress == 1)) {
-		Io.LedBlink(TRIGGER_3, 25, T_250MSEC);
-	}
-	//--------------------------------------------------------
+    if (Isr.TimeOutBlinkLed4        > 0) { Isr.TimeOutBlinkLed4--;      }       //  TimeOut Blink Led 4
+    if (Isr.TimeOutBlinkLed5        > 0) { Isr.TimeOutBlinkLed5--;      }       //  TimeOut Blink Led 5
+    if (Isr.TimeOutBlinkLed6        > 0) { Isr.TimeOutBlinkLed6--;      }       //  TimeOut Blink Led 6
+    if (Isr.TimeOutBlinkLed7        > 0) { Isr.TimeOutBlinkLed7--;      }       //  TimeOut Blink Led 7
+    if (Isr.TimeOutBlinkLed8        > 0) { Isr.TimeOutBlinkLed8--;      }       //  TimeOut Blink Led 8
+    if (Isr.TimeOutBlinkLed9        > 0) { Isr.TimeOutBlinkLed9--;      }       //  TimeOut Blink Led 9
+    
+    if (Isr.TimeOutBlinkTrigger1    > 0) { Isr.TimeOutBlinkTrigger1--;  }       //  TimeOut Blink Trigger 1
+    if (Isr.TimeOutBlinkTrigger2    > 0) { Isr.TimeOutBlinkTrigger2--;  }       //  TimeOut Blink Trigger 2
+    if (Isr.TimeOutBlinkTrigger3    > 0) { Isr.TimeOutBlinkTrigger3--;  }       //  TimeOut Blink Trigger 3
+    
+    //--------------------------------------------------------
+    //  Used during engine GSM/GPRS initialization. The Trigger 3
+    //  blink to indiacate init process
+    if ((Gsm.GsmFlag.Bit.GsmInitInProgress == 1) || (Gsm.GsmFlag.Bit.GprsInitInProgress == 1)) {
+        Io.LedBlink(TRIGGER_3, 25, T_250MSEC);
+    }
+    //--------------------------------------------------------
 }
 /****************************************************************************/
 
@@ -239,73 +239,73 @@ ISR(TIMER1_OVF_vect) {
  * Function:        ISR(INT0_vect) Or ISR(INT4_vect)
  *
  * Overview:        INT0 interrupt vector. When an SMS is received or a phonic call incoming, the INT0 falling edge is generated
- *					The INT0 rising edge is generated when a phonic call terminate or when an SMS is recieved completely
+ *                  The INT0 rising edge is generated when a phonic call terminate or when an SMS is recieved completely
  *
- *					=========================================================================================================
- *					SIMCOM SIM900 And QUECTEL M95
+ *                  =========================================================================================================
+ *                  SIMCOM SIM900 And QUECTEL M95
  *
- * 					T = 120mSec -> Received SMS
- *			   	    _____ <-------------> ___________
- *			       		 |               |
- *       		   		 |               |
- *       		   		 |_______________|
+ *                  T = 120mSec -> Received SMS
+ *                  _____ <-------------> ___________
+ *                       |               |
+ *                       |               |
+ *                       |_______________|
  *
- *			        					T > 120mSec -> Incoming Call
- *  				_____ <---------------------------------------------------------> _________
- * 					     |                                                           |
- *					     |                                                           |
- *					     |___________________________________________________________|
+ *                                      T > 120mSec -> Incoming Call
+ *                  _____ <---------------------------------------------------------> _________
+ *                       |                                                           |
+ *                       |                                                           |
+ *                       |___________________________________________________________|
  *
- *					Stanby			HIGH
- *					-----------------------------------
- *					Voice Call		The pin is cahnged to low. When any of the following events occur, the pin will be changed to high:
- *									(1) Establish the call
- *									(2) Hang Up the call
- *					-----------------------------------
- *					Data Call		The pin is cahnged to low. When any of the following events occur, the pin will be changed to high:
- *									(1) Establish the call
- *									(2) Hang Up the call
- *					-----------------------------------
- *					SMS				The pin changed to low, and kept low for 120mSec when a SMS is received. Then it is changed to high
+ *                  Stanby          HIGH
+ *                  -----------------------------------
+ *                  Voice Call      The pin is cahnged to low. When any of the following events occur, the pin will be changed to high:
+ *                                  (1) Establish the call
+ *                                  (2) Hang Up the call
+ *                  -----------------------------------
+ *                  Data Call       The pin is cahnged to low. When any of the following events occur, the pin will be changed to high:
+ *                                  (1) Establish the call
+ *                                  (2) Hang Up the call
+ *                  -----------------------------------
+ *                  SMS             The pin changed to low, and kept low for 120mSec when a SMS is received. Then it is changed to high
  *
- *					=========================================================================================================
- *					FIBOCOM G510
+ *                  =========================================================================================================
+ *                  FIBOCOM G510
  *
- *					T = 150mSec -> Received SMS (G510)
- *  				_____ <-------------> ___________
- * 					     |               |
- *       				 |               |
- *       				 |_______________|
+ *                  T = 150mSec -> Received SMS (G510)
+ *                  _____ <-------------> ___________
+ *                       |               |
+ *                       |               |
+ *                       |_______________|
  *
- *          		T = 1Sec -> Incoming Call      			  T = 1Sec
- * 					_____ <-------------> _______________ <-------------> _______________                 _______  
- *       				 |               |               |               |               |               |
- *       				 |               |               |               |               |               |
- *       				 |_______________|               |_______________|               |_______________|
- *                        				  <------------->                 <------------->
- *							 				 T = 1Sec                        T = 1Sec
+ *                  T = 1Sec -> Incoming Call                 T = 1Sec
+ *                  _____ <-------------> _______________ <-------------> _______________                 _______  
+ *                       |               |               |               |               |               |
+ *                       |               |               |               |               |               |
+ *                       |_______________|               |_______________|               |_______________|
+ *                                        <------------->                 <------------->
+ *                                           T = 1Sec                        T = 1Sec
  *
- *					Stanby			HIGH
- * 					-----------------------------------
- *					Voice Call		The pin is cahnged to low, and kept low for 1Sec then the pin will be changed to high and kept high for 1Sec.
- *									This sequence terminate when:
- *									(1) Establish the call
- *									(2) Hang Up the call
- *					-----------------------------------
- *					Data Call		The pin is cahnged to low, and kept low for 1Sec then the pin will be changed to high and kept high for 1Sec.
- *									This sequence terminate when:
- *									(1) Establish the call
- *									(2) Hang Up the call
- *					-----------------------------------
- *					SMS				The pin changed to low, and kept low for 150mSec when a SMS is received. Then it is changed to high
+ *                  Stanby          HIGH
+ *                  -----------------------------------
+ *                  Voice Call      The pin is cahnged to low, and kept low for 1Sec then the pin will be changed to high and kept high for 1Sec.
+ *                                  This sequence terminate when:
+ *                                  (1) Establish the call
+ *                                  (2) Hang Up the call
+ *                  -----------------------------------
+ *                  Data Call       The pin is cahnged to low, and kept low for 1Sec then the pin will be changed to high and kept high for 1Sec.
+ *                                  This sequence terminate when:
+ *                                  (1) Establish the call
+ *                                  (2) Hang Up the call
+ *                  -----------------------------------
+ *                  SMS             The pin changed to low, and kept low for 150mSec when a SMS is received. Then it is changed to high
  *
  * PreCondition:    None
  *
- * GSM cmd syntax:	None	
+ * GSM cmd syntax:  None    
  *
  * Input:           None
  *
- * Command Note:	None
+ * Command Note:    None
  *
  * Output:          None
  *
@@ -323,20 +323,20 @@ ISR(INT0_vect)
 ISR(INT4_vect)
 {
 #endif
-	if (Gsm.GsmFlag.Bit.GsmInitInProgress == 1) {
-		return;
-	}
-	//Gsm.ResetAllFlags();
-	Gsm.ResetGsmFlags();
-	Gsm.ResetSmsFlags();
-	Gsm.ResetPhonicCallFlags();
-	Gsm.ReadPointer = 0;
-	Gsm.UartArrayPointer = &Gsm.GSM_Data_Array[0];
-	
-	Gsm.StateSendCmd       = CMD_IDLE;
-	Gsm.StateWaitAnswerCmd = CMD_WAIT_IDLE;
-	Gsm.UartState          = UART_WAITDATA_STATE;
-	
-	Gsm.GsmFlag.Bit.CringOccurred = 1;
+    if (Gsm.GsmFlag.Bit.GsmInitInProgress == 1) {
+        return;
+    }
+    //Gsm.ResetAllFlags();
+    Gsm.ResetGsmFlags();
+    Gsm.ResetSmsFlags();
+    Gsm.ResetPhonicCallFlags();
+    Gsm.ReadPointer = 0;
+    Gsm.UartArrayPointer = &Gsm.GSM_Data_Array[0];
+    
+    Gsm.StateSendCmd       = CMD_IDLE;
+    Gsm.StateWaitAnswerCmd = CMD_WAIT_IDLE;
+    Gsm.UartState          = UART_WAITDATA_STATE;
+    
+    Gsm.GsmFlag.Bit.CringOccurred = 1;
 }
 /****************************************************************************/

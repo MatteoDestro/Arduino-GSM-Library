@@ -5,19 +5,19 @@
  *********************************************************************
  * FileName:        AT Cmd Supported List.txt
  * Revision:        1.0.0 (First issue)
- * Date:			19/01/2019
+ * Date:            19/01/2019
  *
- * Dependencies:	
+ * Dependencies:    
  *
- * Arduino Board:	Arduino Uno, Arduino Mega 2560, Fishino Uno, Fishino Mega 2560       
+ * Arduino Board:   Arduino Uno, Arduino Mega 2560, Fishino Uno, Fishino Mega 2560       
  *
  * Company:         Futura Group srl
- *  				www.Futurashop.it
- *  				www.open-electronics.org
+ *                  www.Futurashop.it
+ *                  www.open-electronics.org
  *
- * Developer:		Destro Matteo
+ * Developer:       Destro Matteo
  *
- * Support:			info@open-electronics.org
+ * Support:         info@open-electronics.org
  * 
  * Software License Agreement
  *
@@ -33,16 +33,16 @@
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
  *
- *	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- *	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- *	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * 	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
- *	ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- *	(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- *	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- *	ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- *	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ *  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ *  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ *  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ *  ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ *  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ *  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ *  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  **********************************************************************/
  
@@ -53,8 +53,8 @@ LEGEND -> Y = YES; N = N0; ### = Not supported to the GSM Engine; @@@ = Not impl
 |                            |                                                                                |                          |                                |                                |
 |                            | SIMCOM                                                                         | QUECTEL                  | FIBOCOM                        | AI THINKER                     |
 | ___________________________|________________________________________________________________________________|__________________________|________________________________|________________________________|
-|		 	 |               |                          |                          |                          |		                     |		                          |                                |
-| INIT CMD ? | GENERIC CMD ? | SIM800C                  | SIM900                   | SIM928A                  | M95  	                 | G510                           | A9                             |
+|            |               |                          |                          |                          |                          |                                |                                |
+| INIT CMD ? | GENERIC CMD ? | SIM800C                  | SIM900                   | SIM928A                  | M95                      | G510                           | A9                             |
 |____________|_______________|__________________________|__________________________|__________________________|__________________________|________________________________|________________________________|
 |     Y      |       N       | AT                       | AT                       | AT                       | AT                       | AT                             | AT                             | 
 |     Y      |       N       | AT&F0                    | AT&F0                    | AT&F0                    | AT&F0                    | AT&F0                          | AT&F0                          | Set all TA parameters to manufacturer defaults
